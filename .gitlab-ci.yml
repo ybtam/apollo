@@ -23,6 +23,7 @@ build:
     - node18
   script:
     - npm i -g pnpm
+    - pnpm install
     - pnpm run dev:prepare
     - pnpm run dev:build
     - pnpm build
