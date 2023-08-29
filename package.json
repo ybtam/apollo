@@ -22,7 +22,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "standard-version --prerelease alpha && pnpm publish --tag next"
+    "release": "pnpm publish --tag next"
   },
   "dependencies": {
     "@apollo/client": "^3.7.10",
