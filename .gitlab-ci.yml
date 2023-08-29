@@ -14,7 +14,7 @@ setup:
     - node18
   script:
     - echo //$CI_SERVER_HOST/api/v4/projects/12/packages/npm/:_authToken=$CI_JOB_TOKEN >> .npmrc
-    - npm i -g pnpm
+    - npm i pnpm
     - pnpm install
 
 build:
