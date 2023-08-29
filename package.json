@@ -49,7 +49,7 @@
     "vue": "^3.3.4"
   },
   "publishConfig": {
-    "access": "public"
+    "@pawpaw-packages:registry": "https://gitlab.abrian.cloud/api/v4/projects/12/packages/npm/"
   },
   "resolutions": {
     "@nuxtjs/apollo": "link:."
