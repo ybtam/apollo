@@ -25,7 +25,6 @@ build:
     - npm i -g pnpm
     - pnpm install
     - pnpm run dev:prepare
-    - pnpm run dev:build
     - pnpm build
 
 publish:
@@ -38,4 +37,4 @@ publish:
     - echo //$CI_SERVER_HOST/api/v4/packages/npm/:_authToken=$CI_JOB_TOKEN >> .npmrc
     - pnpm publish
   only:
-    - main
+    - develop
