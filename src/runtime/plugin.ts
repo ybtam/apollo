@@ -8,6 +8,7 @@ import { setContext } from '@apollo/client/link/context'
 import createRestartableClient from './ws'
 import { useApollo } from './composables'
 import { ref, useCookie, defineNuxtPlugin, useRequestHeaders } from '#imports'
+import { createUploadLink } from 'apollo-upload-client'
 
 import NuxtApollo from '#apollo'
 
@@ -57,11 +58,17 @@ export default defineNuxtPlugin((nuxtApp) => {
       }
     })
 
-    const httpLink = authLink.concat(createHttpLink({
+    const httpLinkOptions = {
       ...(clientConfig?.httpLinkOptions && clientConfig.httpLinkOptions),
       uri: (process.client && clientConfig.browserHttpEndpoint) || clientConfig.httpEndpoint,
       headers: { ...(clientConfig?.httpLinkOptions?.headers || {}) }
-    }))
+    }
+
+    const httpLink = authLink.concat(
+      clientConfig.useUploadLink
+        ? createUploadLink(httpLinkOptions)
+        : createHttpLink(httpLinkOptions)
+    )
 
     let wsLink: GraphQLWsLink | null = null
 
