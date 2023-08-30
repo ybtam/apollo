@@ -40,7 +40,7 @@ export default defineNuxtModule<NuxtApolloConfig<any>>({
   },
   async setup (options, nuxt) {
     if (!options.clients || !Object.keys(options.clients).length) {
-      throw new Error('[@nuxtjs/apollo] Atleast one client must be configured.')
+      throw new Error(`[${name}] Atleast one client must be configured.`)
     }
 
     const { resolve } = createResolver(import.meta.url)
@@ -176,7 +176,7 @@ export default defineNuxtModule<NuxtApolloConfig<any>>({
     nuxt.hook('builder:watch', async (_event, path) => {
       if (!Object.values(configPaths).some(p => p.includes(path))) { return }
 
-      logger.log('[@nuxtjs/apollo] Reloading Apollo configuration')
+      logger.log(`[${name}] Reloading Apollo configuration`)
 
       await prepareClients()
 
