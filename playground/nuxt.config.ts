@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', '@nuxtjs/apollo'],
+  modules: ['@nuxt/ui', '@pawpaw-packages/nuxt-apollo'],
 
   colorMode: {
     preference: 'light',
