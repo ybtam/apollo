@@ -75,8 +75,8 @@ importers:
 
   playground:
     dependencies:
-      '@nuxtjs/apollo':
-        specifier: link:..
+      '@pawpaw-packages/nuxt-apollo':
+        specifier: workspace:*
         version: link:..
 
 packages:
