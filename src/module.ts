@@ -39,6 +39,8 @@ export default defineNuxtModule<NuxtApolloConfig<any>>({
     clientAwareness: false
   },
   async setup (options, nuxt) {
+    // const resolver = createResolver(import.meta.url)
+
     if (!options.clients || !Object.keys(options.clients).length) {
       throw new Error(`[${name}] Atleast one client must be configured.`)
     }
@@ -113,7 +115,7 @@ export default defineNuxtModule<NuxtApolloConfig<any>>({
       ].join('\n')
     }).dst
 
-    nuxt.options.alias['apollo-upload-client'] = 'apollo-upload-client/public/index.mjs'
+    nuxt.options.alias['#apollo-upload-client'] = 'apollo-upload-client/public/index.mjs'
 
     addPlugin(resolve('runtime/plugin'))
 
