@@ -34,7 +34,7 @@
     </main>
 
     <footer border-t-1 border-slate flex justify-center items-center>
-      @nuxtjs/apollo playground
+      @pawpaw-packages/nuxt-apollo playground
     </footer>
   </div>
 </template>

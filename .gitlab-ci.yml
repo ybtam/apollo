@@ -1,0 +1,44 @@
+stages:
+  - setup
+  - build
+  - publish
+
+cache:
+  paths:
+    - node_modules
+    - dist
+
+setup:
+  stage: setup
+  tags:
+    - node18
+  script:
+    - echo //$CI_SERVER_HOST/api/v4/projects/12/packages/npm/:_authToken=$CI_JOB_TOKEN >> .npmrc
+    - npm i -g pnpm
+    - pnpm install
+
+build:
+  stage: build
+  tags:
+    - node18
+  script:
+    - npm i -g pnpm
+    - pnpm install
+    - pnpm run dev:prepare
+    - pnpm build
+
+publish:
+  stage: publish
+  tags:
+    - node18
+  script:
+    - npm i -g pnpm
+    - pnpm install
+    - pnpm run dev:prepare
+    - pnpm build
+    - echo //$CI_SERVER_HOST/api/v4/projects/12/packages/npm/:_authToken=$CI_JOB_TOKEN >> .npmrc
+    - echo //$CI_SERVER_HOST/api/v4/packages/npm/:_authToken=$CI_JOB_TOKEN >> .npmrc
+    - cat .npmrc
+    - npm publish
+  only:
+    - develop

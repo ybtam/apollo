@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0-alpha.6.2] (2023-09.16)
+* fixed build time name resolving
+
+## [5.0.0-alpha.6.2] (2023-08.30)
+* added apollo upload
+
 ## [5.0.0-alpha.3](https://github.com/nuxt-modules/apollo-module/compare/v5.0.0-alpha.2...v5.0.0-alpha.3) (2022-10-19)
 
 
