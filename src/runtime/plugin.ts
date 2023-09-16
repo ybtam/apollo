@@ -8,7 +8,7 @@ import { setContext } from '@apollo/client/link/context'
 import createRestartableClient from './ws'
 import { useApollo } from './composables'
 import { ref, useCookie, defineNuxtPlugin, useRequestHeaders } from '#imports'
-import { createUploadLink } from '#apollo-upload-client'
+import { createUploadLink } from 'apollo-upload-client'
 
 import NuxtApollo from '#apollo'
 

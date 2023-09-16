@@ -2,7 +2,7 @@ import { existsSync } from 'fs'
 import jiti from 'jiti'
 import { Ref } from 'vue'
 import { defu } from 'defu'
-import { useLogger, addPlugin, addImports, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { useLogger, addPlugin, addImports, addTemplate, createResolver, defineNuxtModule, resolveModule } from '@nuxt/kit'
 import GraphQLPlugin from '@rollup/plugin-graphql'
 import { name, version } from '../package.json'
 import type { ClientConfig, NuxtApolloConfig, ErrorResponse } from './types'
@@ -39,8 +39,6 @@ export default defineNuxtModule<NuxtApolloConfig<any>>({
     clientAwareness: false
   },
   async setup (options, nuxt) {
-    // const resolver = createResolver(import.meta.url)
-
     if (!options.clients || !Object.keys(options.clients).length) {
       throw new Error(`[${name}] Atleast one client must be configured.`)
     }
@@ -115,7 +113,10 @@ export default defineNuxtModule<NuxtApolloConfig<any>>({
       ].join('\n')
     }).dst
 
-    nuxt.options.alias['#apollo-upload-client'] = 'apollo-upload-client/public/index.mjs'
+    // FIXME: remove this deprecated call. Ensure it works in Nuxt 2 to 3
+    nuxt.options.alias['apollo-upload-client'] = resolveModule("apollo-upload-client/public/index.mjs", {
+      paths: [nuxt.options.rootDir, import.meta.url],
+    });
 
     addPlugin(resolve('runtime/plugin'))
 
