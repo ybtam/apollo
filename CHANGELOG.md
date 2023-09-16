@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0-alpha.6.3] (2023-09.16)
+* fixed invalid default http point
+
 ## [5.0.0-alpha.6.2] (2023-09.16)
 * fixed build time name resolving
 
